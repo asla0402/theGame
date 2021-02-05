@@ -39,18 +39,16 @@ function scissorsClick() {
 }
 
 function handleClick() {
-  resetAnimation();
   makeRandomComputerChoise();
   determineWinner();
   showAnimations();
+  restartGame();
 }
 
 function makeRandomComputerChoise() {
   //math.random (vælg mellem 0,1 eller 2)
   computerChoise = Math.floor(Math.random() * 3);
   console.log(computerChoise);
-  //Computer vælger random player.rock, player.paper, player.scissors
-  //Math.random() mellem de tre måske variabler?;
 }
 
 function showAnimations() {
@@ -63,14 +61,14 @@ function determineWinner() {
     //draw
     showDraw();
   } else if (myChoise == rockValue && computerChoise == paperValue) {
-    //I loose
-    showLoose();
+    //I lose
+    showLose();
   } else if (myChoise == paperValue && computerChoise == scissorsValue) {
-    //I i loose
-    showLoose();
+    //I i lose
+    showLose();
   } else if (myChoise == scissorsValue && computerChoise == rockValue) {
-    //I i loose
-    showLoose();
+    //I i lose
+    showLose();
   } else {
     //i win
     showWin();
@@ -79,14 +77,19 @@ function determineWinner() {
 
 function showWin() {
   console.log("Show win!");
+  document.querySelector("#win").classList.remove("hidden");
 }
 
-function showLoose() {
-  console.log("Show loose!");
+function showLose() {
+  console.log("Show lose!");
+  document.querySelector("#lose").classList.remove("hidden");
 }
 
 function showDraw() {
   console.log("Show draw!");
+  document.querySelector("#draw").classList.remove("hidden");
 }
 
-function resetAnimation() {}
+function restartGame() {
+  start();
+}
